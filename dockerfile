@@ -1,5 +1,11 @@
+
 # syntax=docker/dockerfile:1
 FROM ubuntu:latest
+
+ARG GEOSERVER_DATA_DIR "/data_dir"
+ARG GEOWEBCACHE_CACHE_DIR "/data_dir/gwc"
+ARG LANG=es_ES.UTF-8
+ARG Djavax.servlet.response.encoding=UTF-8
 
 RUN apt update && apt upgrade
 
@@ -29,9 +35,9 @@ EXPOSE 8080
 # COPY . .
 
 # RUN cd "geoserver"
-ENV GEOSERVER_DATA_DIR "/data_dir"
-ENV GEOWEBCACHE_CACHE_DIR "/data_dir/gwc"
-ENV LANG=es_ES.UTF-8
-ENV Djavax.servlet.response.encoding=UTF-8
+# ENV GEOSERVER_DATA_DIR "/data_dir"
+# ENV GEOWEBCACHE_CACHE_DIR "/data_dir/gwc"
+# ENV LANG=es_ES.UTF-8
+# ENV Djavax.servlet.response.encoding=UTF-8
 
 ENTRYPOINT ["/bin/startup.sh"]
